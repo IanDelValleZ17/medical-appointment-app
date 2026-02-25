@@ -7,16 +7,13 @@
             'active' => request()->routeIs('admin.dashboard'),
         ],
         [
-            'header' => 'ADMINISTRACIÓN',
+            'header' => 'Gestión',
         ],
-        [
-            'name' => 'Tienda en línea',
-            'icon' => 'fa-solid fa-users',
-            'active' => false,
-            'submenu' => [
-                ['name' => 'Productos', 'href' => '#'],
-                ['name' => 'Pedidos', 'href' => '#'],
-            ],
+        [ 
+            'name' => 'Roles y permisos',
+            'icon' => 'fa-solid fa-shield-halved',
+            'href' => route('admin.roles.index'),
+            'active' => request()->routeIs('admin.roles.*'),
         ],
     ];
 @endphp
@@ -61,7 +58,7 @@
                         </ul>
                     @else
                         <a href="{{ $link['href'] ?? '#' }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white {{ $link['active'] ?? false ? 'bg-gray-100 dark:bg-gray-700' : '' }} hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="flex items-center w-full p-2 text-base text-gray-900 ">
                             <span class="w-6 h-6 inline-flex justify-center items-center text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
                                 <i class="{{ $link['icon'] }}"></i>
                             </span>
