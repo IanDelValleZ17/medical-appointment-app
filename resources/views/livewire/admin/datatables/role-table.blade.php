@@ -1,48 +1,15 @@
-<?php
+<div class="p-4 bg-white rounded-lg shadow">
+    <div class="mb-4">
+        <h1 class="text-2xl font-bold text-gray-900">Roles</h1>
+    </div>
+    
+    <x-livewire-tables::wrapper :component="$this">
+        <x-livewire-tables::tools>
+            <x-livewire-tables::search />
+            <x-livewire-tables::columns-dropdown />
+            <x-livewire-tables::per-page />
+        </x-livewire-tables::tools>
 
-namespace App\Livewire\Admin\Datatables;
-
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
-use Spatie\Permission\Models\Role;
-
-class RoleTable extends DataTableComponent
-{
-    protected $model = Role::class;
-
-    public function configure(): void
-    {
-        $this->setPrimaryKey('id')
-            ->setDefaultSort('id', 'asc')
-            ->setTableRowUrl(function($row) {
-                return null;
-            })
-            ->setPerPageAccepted([10, 25, 50, 100])
-            ->setPerPage(10)
-            ->setSearchEnabled()
-            ->setSearchPlaceholder('Buscar')
-            ->setEmptyMessage('No se encontraron roles');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function columns(): array
-    {
-        //
-        return [
-            Column::make('ID', 'id')
-                ->sortable()
-                ->searchable(),
-            Column::make('NOMBRE', 'name')
-                ->sortable()
-                ->searchable(),
-            Column::make('FECHA', 'created_at')
-                ->sortable()
-                ->format(function($value, $column, $row) {
-                    return $value->format('d/m/Y ');
-                }),
-        ];
-    }
-
-} 
+        <x-livewire-tables::table />
+    </x-livewire-tables::wrapper>
+</div>

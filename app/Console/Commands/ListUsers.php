@@ -11,35 +11,20 @@ class ListUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'user:list';
+    protected $signature = 'app:list-users';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'List all users';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $users = \App\Models\User::all(['id', 'name', 'email']);
-        
-        if ($users->isEmpty()) {
-            $this->info('No hay usuarios en la base de datos.');
-            return 0;
-        }
-
-        $this->info('Usuarios encontrados:');
-        $this->table(
-            ['ID', 'Nombre', 'Email'],
-            $users->map(function ($user) {
-                return [$user->id, $user->name, $user->email];
-            })->toArray()
-        );
-
-        return 0;
+        //
     }
 }

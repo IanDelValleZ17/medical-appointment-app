@@ -12,36 +12,29 @@ class RoleTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id')
-            ->setDefaultSort('id', 'asc')
-            ->setTableRowUrl(function($row) {
-                return null;
-            })
-            ->setPerPageAccepted([10, 25, 50, 100])
-            ->setPerPage(10)
-            ->setSearchEnabled()
-            ->setSearchPlaceholder('Buscar')
-            ->setEmptyMessage('No se encontraron roles');
+        $this->setPrimaryKey('id');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function columns(): array
     {
         //
         return [
-            Column::make('ID', 'id')
+            Column::make("Id", "id")
                 ->sortable()
                 ->searchable(),
-            Column::make('NOMBRE', 'name')
+            Column::make("Nombre", "name")
                 ->sortable()
                 ->searchable(),
-            Column::make('FECHA', 'created_at')
+            Column::make("Fecha", "created_at")
                 ->sortable()
-                ->format(function($value, $column, $row) {
-                    return $value->format('d/m/Y ');
+                ->format(function($value){
+                    return $value->format("d/m/Y");
                 }),
+            Column::make("Acciones")
+                ->label(function( $row){
+                    return view("admin.roles.actions",['role' => $row]);
+                }),
+                
         ];
     }
 

@@ -12,5 +12,4 @@
         
     ],
 ]">
-    Hola desde Admin roles create
 </x-admin-layout>

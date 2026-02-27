@@ -8,14 +8,12 @@ use Illuminate\View\Component;
 
 class AdminLayout extends Component
 {
-    public $breadcrumbs;
-
     /**
      * Create a new component instance.
      */
-    public function __construct($breadcrumbs = [])
+    public function __construct()
     {
-        $this->breadcrumbs = $breadcrumbs;
+        //
     }
 
     /**

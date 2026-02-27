@@ -2,7 +2,7 @@
     $links = [
         [
             'name' => 'Dashboard',
-            'icon' => 'fa-solid fa-gauge-high',
+            'icon' => 'fa-solid fa-gauge',
             'href' => route('admin.dashboard'),
             'active' => request()->routeIs('admin.dashboard'),
         ],
@@ -18,8 +18,8 @@
     ];
 @endphp
 
-<aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+<aside id="top-bar-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
     aria-label="Sidebar">
 
     <div class="h-full px-3 pb-24 overflow-y-auto bg-white dark:bg-gray-800">
@@ -57,12 +57,13 @@
                             @endforeach
                         </ul>
                     @else
-                        <a href="{{ $link['href'] ?? '#' }}"
-                            class="flex items-center w-full p-2 text-base text-gray-900 ">
-                            <span class="w-6 h-6 inline-flex justify-center items-center text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white">
+                        <a href="{{ $link['href'] }}"class="flex items-center w-full p-2 text-base text-gray-900 "
+                            class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hovertext-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"    
+                        <span class="w-6 h-6 inline-flex items-center justify-center text-gray-500">
                                 <i class="{{ $link['icon'] }}"></i>
-                            </span>
-                            <span class="ms-3">{{ $link['name'] }}</span>
+                                </span>
+                                <span class="ms-3">{{ $link['name'] }}</span>
+
                         </a>
                     @endisset
                 </li>

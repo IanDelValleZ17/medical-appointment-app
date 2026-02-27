@@ -54,9 +54,24 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        //validar los datos
+        $request->validate([
+            'name' => 'required|unique:roles,name,' 
+        ]);
+        
+        //Confirmación de operación exitosa
+session()->flash('swal', [
+    'icon' => 'success',
+    'title' => 'Rol creado correctamente',
+    'text' => 'El rol ha sido creado correctamente'
+]);
+
+//Redireccionará a la tabla principal
+return redirect('admin.roles.index')->with('success', 'Role created successfully.');
+        //redireccionar a la pagina de roles
+        
     }
 
     /**
